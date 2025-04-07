@@ -42,7 +42,6 @@ public class SecurityConfig {
             .csrf().disable()
             .authorizeRequests()
             .requestMatchers("/api/auth/**").permitAll() 
-            .requestMatchers( "/api/files/upload","/api/orders/upload/**","/api/files/extract").authenticated() 
             .anyRequest().authenticated()
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -56,8 +55,6 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
-            "https://www.thefabit.com", 
-            "https://www.api.thefabit.com", 
             "https://localhost:5000", 
             "http://localhost:3000",
             "http://localhost:5173"
